@@ -1,0 +1,2 @@
+serviceClass: org.soichiro.charactorbot.client.AuthenticationService
+path: F3B6B3968819CF82D39E65BB50D7FEDE.gwt.rpc

@@ -1,0 +1,187 @@
+charactorbot v1.06.001をダウンロード頂きありがとうございます。
+
+本パッケージは、Google App Engine / Javaにcharactorbotのサービスを
+デプロイ(設置・展開すること)することができるパッケージです。
+
+なお、過去のバージョンからのバージョンアップも同様の手順でデプロイする
+ことでバージョンアップできます。
+
+MacOSXの場合とWindowsの場合の二つのデプロイの方法に記載しますので、
+手順に沿って行いデプロイを行ってください。
+
+なお、サポートリクエストなどに関しましては、
+SouceForge.jpのアカウントを作成して頂き、
+http://sourceforge.jp/ticket/newticket.php?group_id=4938
+から、サポートリクエストの新規チケットを発行して頂ければと思います。
+
+なお、このデプロイの操作を行う際に、
+Google App Engineで使用するQuota(コンピューターリソースの割当)を
+どのように利用するかを設定をすることができます。
+このやり方については、
+http://sourceforge.jp/projects/charactorbot/wiki/QuotaControl
+をご覧ください。
+                                             2012年11月25日 吉村総一郎 (sifue)
+----
+■MacOSXでのデプロイ方法
+1.  JDK1.6またはJRE1.6のインストール
+	MacOSX 10.6 Snow Leopardをご利用の方は予めインストールされています。
+	MacOSX 10.7 Lionをご利用の方は、
+	ターミナル(アプリケーションのユーティリティフォルダ内)より
+	$ java
+	と実行することでJavaがインストールされます。($はプロンプトマークです)
+	
+	そうでない方は、
+	http://developer.apple.com/java/
+	よりJDK 1.6またはJRE1.6を入手、インストールしてください。
+	
+	なお、Javaのバージョンは、ターミナルより
+	$ java -version
+	と入力することで確認することができます。
+
+2. Google App Engineのアプリケーションを作成する
+
+	http://appengine.google.com/
+	
+	以上のURLより、アプリケーションを作成してください。
+	アプリケーションの作成には、Googleアカウントと携帯電話のメールアドレスが
+	必要となります。アプリケーションIDは後に必要となるので、
+	テキストエディットやスティッキーズなどに控えておいてください。 
+	
+3. アプリケーションIDの書き換え
+	charactorbot/war/WEB-INF/appengine-web.xml
+	をテキストエディットなどのテキストエディタで開いてください。
+	
+	3行目の
+	
+		<application>charactorbot</application>
+		
+	となっている部分を先程取得したアプリケーションIDに書き換えます。
+	
+		<application>アプリケーションID</application>
+	
+	以上を行って保存を行ってください。
+	
+4. デプロイの実行
+　ターミナルを起動し、解凍したcharactorbotフォルダ内に移動してください。
+　ターミナルを起動し、cd[スペース] と入力した後、解答されたcharactorbot
+　フォルダをターミナルのウインドウにドラッグ＆ドロップをすると
+　
+　$ cd /Users/userid/Desktop/charactorbot　
+
+	と入力されますので、エンターを押しカレントディレクトリを移動します。
+	移動されると、 userid $ の左側に現在のフォルダが表示されていますので、
+	そこがcharactorbotかどうか確認してください。次に、
+	
+	$ chmod 755 deploy.sh
+	
+	と入力し、デプロイのためのスクリプトに実行権限を与えます。
+	($マークはプロンプトマークですので実際には入力しないでください。）
+	
+	$ ./deploy.sh
+	
+	と入力することでデプロイが実行されます。途中、アプリケーションを作成した
+	GoogleアカウントのIDとパスワードの入力が求められますので、
+	入力してください。
+
+	無事終了すると、インデックスが作成し終わる30-60分後には
+	
+	http://アプリケーションID.appspot.com/?locale=ja
+
+	にアクセスすることで問題なくTwitterボット作成サービス - キャラボットが
+	使用できるようになります。(場合によってはもっとかかる場合もあります)
+	なお 、
+	
+	http://appengine.google.com/
+	
+	のリンクから行けるアプリケーションの管理コンソールにて
+	Datastore Indexesの作成状況、データのの状況やログなども
+	すべて確認することができるようになります。
+	
+	以上で終了となります。お疲れ様でした。
+
+	なおデプロイ後のデバッグの方法については、
+
+	http://sourceforge.jp/projects/charactorbot/wiki/Debug
+
+	をご覧ください。
+
+----
+■Windowsでのデプロイ方法
+1.  JDK1.6またはJRE1.6のインストール
+
+	http://www.oracle.com/technetwork/java/javase/downloads/index.html
+	
+	以上のサイトより、自分のプラットフォームにあったJDKを
+	ダウンロードし、インストールして下さい。
+	Java SE 6 Update XXと表示されている項目からダウンロードします。
+	
+	なお、Javaのバージョンは、コマンドプロンプトより
+	> java -version
+	と入力することで確認することができます。(> はプロンプトマークです）
+	
+2. Google App Engineのアプリケーションを作成する
+
+	http://appengine.google.com/
+	
+	以上のURLより、アプリケーションを作成してください。
+	アプリケーションの作成には、Googleアカウントと携帯電話のメールアドレスが
+	必要となります。アプリケーションIDは後に必要となるので、
+	メモ帳などに控えておいてください。 
+	
+3. アプリケーションIDの書き換え
+	charactorbot/war/WEB-INF/appengine-web.xml
+	をメモ帳などのテキストエディタで開いてください。
+	
+	3行目の
+	
+		<application>charactorbot</application>
+		
+	となっている部分を先程取得したアプリケーションIDに書き換えます。
+	
+		<application>アプリケーションID</application>
+	
+	以上を行って保存を行ってください。
+
+4.  Google App Engine SDK for Javaの取得と解凍
+
+	http://googleappengine.googlecode.com/files/appengine-java-sdk-1.7.3.zip
+	
+	のURLからGoogle App Engine SDK for Javaを取得し、
+	charactorbotフォルダ内に解凍して下さい。
+	解凍の際には、Windowsデフォルトの解凍ツールでなく、
+	WinRARを使うことを推奨します。
+	その他の解凍ツールでは、zip内zipの解凍、.ではじまるファイルの無視、
+	解凍失敗を正しく通知しないなどの問題が報告されています。
+	
+4. デプロイの実行
+　	コマンドプロンプトで、charactorbotフォルダに移動した後、
+	(cdコマンド等を使って移動しますが、わからない方は
+         コマンドプロンプトの使い方を調べることをお勧めします)
+　　
+　> appengine-java-sdk-1.7.3\bin\appcfg.cmd update war
+
+	と入力することでデプロイが実行されます。
+	途中、アプリケーションを作成したGoogleアカウントのIDと
+	パスワードの入力が求められますので、入力してください。
+
+	無事終了すると、インデックスが作成し終わる30-60分後には
+	
+	http://アプリケーションID.appspot.com/?locale=ja
+
+	にアクセスすることで問題なくTwitterボット作成サービス - キャラボットが
+	使用できるようになります。(場合によってはもっとかかる場合もあります)
+	なお 、
+	
+	http://appengine.google.com/
+	
+	のリンクから行けるアプリケーションの管理コンソールにて
+	Datastore Indexesの作成状況、データのの状況やログなども
+	すべて確認することができるようになります。
+
+	以上で終了となります。お疲れ様でした。
+
+	なおデプロイ後のデバッグの方法については、
+
+	http://sourceforge.jp/projects/charactorbot/wiki/Debug
+
+	をご覧ください。

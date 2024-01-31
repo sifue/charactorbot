@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE web-app
+    PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+    "http://java.sun.com/dtd/web-app_2_3.dtd">
+
+<web-app>
+	<!-- appstats for profile -->
+	<!-- <servlet>
+	    <servlet-name>appstats</servlet-name>
+	    <servlet-class>
+	        com.google.appengine.tools.appstats.AppstatsServlet
+	    </servlet-class>
+	</servlet>
+	<servlet-mapping>
+	    <servlet-name>appstats</servlet-name>
+	    <url-pattern>/appstats/*</url-pattern>
+	</servlet-mapping>
+	
+	<security-constraint>
+	    <web-resource-collection>
+	        <url-pattern>/appstats/*</url-pattern>
+	    </web-resource-collection>
+	    <auth-constraint>
+	        <role-name>admin</role-name>
+	    </auth-constraint>
+	</security-constraint>
+	
+	<filter>
+	   <filter-name>appstats</filter-name>
+	   <filter-class>
+	     com.google.appengine.tools.appstats.AppstatsFilter
+	   </filter-class>
+	   <init-param>
+	      <param-name>logMessage</param-name>
+	      <param-value>Appstats available: /appstats/details?time={ID}</param-value>
+	   </init-param>
+	</filter>
+	<filter-mapping>
+	   <filter-name>appstats</filter-name>
+	   <url-pattern>/*</url-pattern>
+	</filter-mapping>  -->
+  
+  <!-- Servlets for charactorbot function -->
+  <servlet>
+    <servlet-name>twitterBotServlet</servlet-name>
+    <servlet-class>org.soichiro.charactorbot.server.TwitterBotServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>twitterBotServlet</servlet-name>
+    <url-pattern>/charactorbot/twitterbot</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>AccountTaskServlet</servlet-name>
+    <servlet-class>org.soichiro.charactorbot.server.AccountTaskServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>AccountTaskServlet</servlet-name>
+    <url-pattern>/tasks/accounttask</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>authenticationServiceImpl</servlet-name>
+    <servlet-class>org.soichiro.charactorbot.server.AuthenticationServiceImpl</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>authenticationServiceImpl</servlet-name>
+    <url-pattern>/charactorbot/authentication</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>charactorbotServiceImpl</servlet-name>
+    <servlet-class>org.soichiro.charactorbot.server.CharactorbotServiceImpl</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>charactorbotServiceImpl</servlet-name>
+    <url-pattern>/charactorbot/mainService</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>ServerInfoSendingServlet</servlet-name>
+    <servlet-class>org.soichiro.charactorbot.server.ServerInfoSendingServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>ServerInfoSendingServlet</servlet-name>
+    <url-pattern>/charactorbot/ServerInfoSending</url-pattern>
+  </servlet-mapping>
+  
+  <!-- Default page to serve for charactorbot function -->
+  <welcome-file-list>
+    <welcome-file>Charactorbot.html</welcome-file>
+  </welcome-file-list>
+  
+  <!-- Security Constraint for charactorbot function -->
+  <security-constraint>
+    <web-resource-collection>
+        <url-pattern>/charactorbot/twitterbot</url-pattern>
+    </web-resource-collection>
+    <auth-constraint>
+        <role-name>admin</role-name>
+    </auth-constraint>
+  </security-constraint>
+
+  <security-constraint>
+    <web-resource-collection>
+        <url-pattern>/tasks/accounttask</url-pattern>
+    </web-resource-collection>
+    <auth-constraint>
+        <role-name>admin</role-name>
+    </auth-constraint>
+  </security-constraint>
+
+  <security-constraint>
+    <web-resource-collection>
+        <url-pattern>/charactorbot/ServerInfoSending</url-pattern>
+    </web-resource-collection>
+    <auth-constraint>
+        <role-name>admin</role-name>
+    </auth-constraint>
+  </security-constraint>
+
+  <!-- To use remote api -->
+  <servlet>
+    <servlet-name>remoteapi</servlet-name>
+    <servlet-class>com.google.apphosting.utils.remoteapi.RemoteApiServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>remoteapi</servlet-name>
+    <url-pattern>/remote_api</url-pattern>
+  </servlet-mapping>
+  <security-constraint>
+    <web-resource-collection>
+      <web-resource-name>remoteapi</web-resource-name>
+      <url-pattern>/remote_api</url-pattern>
+    </web-resource-collection>
+    <auth-constraint>
+      <role-name>admin</role-name>
+    </auth-constraint>
+  </security-constraint>
+   
+</web-app>

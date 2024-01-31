@@ -1,0 +1,4 @@
+# Module charactorbot
+# RPC service class, partial path of RPC policy file
+org.soichiro.charactorbot.client.AuthenticationService, F3B6B3968819CF82D39E65BB50D7FEDE.gwt.rpc
+org.soichiro.charactorbot.client.CharactorbotService, 5077F674260B5917BFAD6189213D6BFA.gwt.rpc

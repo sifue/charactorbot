@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="charactorbot" default="main" basedir=".">
+	<!-- 成果物のzipファイル名を設定 -->
+	<property name="zip.name" value="charactorbot.v1.06.001.zip" />
+
+	<property name="dir.build" value="build" />
+	<property name="dir.war" value="war" />
+	<property name="dir.resources" value="build-resources" />
+
+	<target name="main" description="簡易デプロイ用パッケージのビルド">
+		<echo message="元ビルドフォルダをクリーンして再作成" />
+		<delete dir="${dir.build}" />
+		<mkdir dir="${dir.build}/charactorbot/war" />
+
+		<echo message="warフォルダをビルド用にコピー" />
+		<copy todir="${dir.build}/charactorbot/war">
+			<fileset dir="${dir.war}" />
+		</copy>
+
+		<echo message="ドキュメントとスクリプト類をコピー" />
+		<copy todir="${dir.build}/charactorbot">
+			<fileset dir="${dir.resources}" />
+		</copy>
+
+		<echo message="指定した名前のzipファイルを作成する" />
+		<zip destfile="${dir.build}/${zip.name}" basedir="${dir.build}" encoding="SJIS" />
+		
+		<echo message="作業用ディレクトリを削除" />
+		<delete dir="${dir.build}/charactorbot"/>
+	</target>
+</project>

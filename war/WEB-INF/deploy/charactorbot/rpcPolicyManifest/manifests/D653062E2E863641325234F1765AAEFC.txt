@@ -1,0 +1,2 @@
+serviceClass: org.soichiro.charactorbot.client.CharactorbotService
+path: 5077F674260B5917BFAD6189213D6BFA.gwt.rpc

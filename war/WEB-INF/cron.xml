@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cronentries>
+  <cron>
+    <url>/charactorbot/twitterbot</url>
+    <description>Call TwitterBot.</description>
+    <schedule>every 1 minutes</schedule>
+  </cron>
+  <cron>
+    <url>/charactorbot/ServerInfoSending</url>
+    <description>Send Server Informaition to central server.</description>
+    <schedule>every 24 hours</schedule>
+  </cron>
+</cronentries>
